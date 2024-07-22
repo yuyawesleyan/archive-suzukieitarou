@@ -1,12 +1,16 @@
 /* style.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-image: url(''); /* 背景画像のURLを指定 */
+    background-size: cover; /* 画像がページ全体に拡大 */
+    background-position: center center; /* 画像をページの中央に配置 */
+    background-repeat: no-repeat; /* 画像の繰り返しを無効化 */
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3 {
+
+h1, h2, h3, h4 {
     text-align: left;
     color: #333;
 }
@@ -15,14 +19,7 @@ h1 {
     margin-top: 40px;
 }
 
-#header-container {
-    display: flex; /* フレックスボックスを使用 */
-    align-items: center; /* 垂直方向に中央揃え */
-    justify-content: space-between; /* タイトルとリンクボタンの間にスペースを追加 */
-    padding: 20px; /* 内側の余白 */
-    background-color: #f8f9fa; /* 背景色 */
-    border-bottom: 1px solid #ddd; /* 下にボーダーを追加 */
-}
+
 
 
 #search-container {
@@ -87,51 +84,78 @@ p {
     line-height: 1.6;
     margin: 10px 20px;
 }
-
-#action-result {
-    text-align: center;
+#action-result {    text-align: center;
     margin: 20px 0;
 }
-
 @media (max-width: 768px) {
     #search-results {
         width: 90%;
     }
-
     #search-input {
         width: 70%;
     }
-
     .button {
         width: 80%;
         display: block;
         margin: 10px auto;
     }
 }
-
 /* styles.css */
-
 /* h2 見出しのスタイル */
 h2 {
     font-size: 24px; /* フォントサイズ */
     color: #333; /* テキストカラー */
     margin-bottom: 20px; /* 下の余白 */
 }
-
 /* p タグのスタイル */
 p {
-    font-size: 16px; /* フォントサイズ */
+    font-size: 18px; /* フォントサイズ */
     color: #090909; /* テキストカラー */
     line-height: 1.6; /* 行間の設定 */
     margin-bottom: 10px; /* 下の余白 */
+    text-align: left;
 }
-
-p1
-
 /* h3 見出しのスタイル */
 h3 {
-    font-size: 30px; /* フォントサイズ */
+    font-size: 24px; /* フォントサイズ */
     color: #444; /* テキストカラー */
     margin-top: 30px; /* 上の余白 */
     margin-bottom: 10px; /* 下の余白 */
 }
+
+h4{
+    font-size: 24px;
+    color: #090909;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.pickup-container {
+    text-align: left;
+}
+
+.pickup-container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.pickup-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+}
+
+.pickup-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+}
+
+.pickup-item img {
+    width: 100%;
+    height: auto;
+}
+    
