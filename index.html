@@ -10,6 +10,64 @@
     <h1> 鈴木栄太郎の未発表手書き原稿｜デジタルアーカイブ</h1>
     <p>日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝を中心とする資料。</p>
     <html lang="ja">
+        <body>
+            <div id="search-container">
+                <input type="text" id="search-input" placeholder="検索...">
+                <button id="search-button">検索</button>
+                <div id="search-results"></div>
+        
+            <script src="search.js"></script>
+            </div>
+        
+            <!DOCTYPE html>
+        <html lang="ja">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>4つのボタンを配置</title>
+            <style>
+                body {
+                    
+                    
+                    font-family: Arial, sans-serif;
+                }
+        
+                #button-container {
+                    text-align: center; /* 内部のテキストを中央に配置 */
+                }
+        
+                .button {
+                    padding: 10px 20px;
+                    margin: 10px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #007bff;
+                    color: white;
+                }
+        
+                .button:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="button-container">
+                <button class="button" onclick="action1(pagetwo.html)">全てのアーカイブを見る</button>
+                <button class="button" onclick="action2()">鈴木栄太郎について</button>
+                <button class="button" onclick="action3()">制作・運用担当者</button>
+                <button class="button" onclick="action4()">WEBページ計画書</button>
+            </div>
+        
+            <div id="action-result"></div>
+        
+            <script src="actions.js"></script>
+        </body>
+        </html>
+        
+        
+               
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,72 +108,39 @@
         }
     </style>
 </head>
-<body>
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="検索...">
-        <button id="search-button">検索</button>
-        <div id="search-results"></div>
-
-    <script src="search.js"></script>
-    </div>
-
-    <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4つのボタンを配置</title>
-    <style>
-        body {
-            
-            
-            font-family: Arial, sans-serif;
-        }
-
-        #button-container {
-            text-align: center; /* 内部のテキストを中央に配置 */
-        }
-
-        .button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <div id="button-container">
-        <button class="button" onclick="action1(pagetwo.html)">全てのアーカイブを見る</button>
-        <button class="button" onclick="action2()">鈴木栄太郎について</button>
-        <button class="button" onclick="action3()">制作・運用担当者</button>
-        <button class="button" onclick="action4()">WEBページ計画書</button>
-    </div>
-
-    <div id="action-result"></div>
-
-    <script src="actions.js"></script>
-</body>
-</html>
-
-
 
     <h2>本デジタルアーカイブについて</h2>
     <p>本デジタルアーカイブは、日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿を中心とする資料をデジタル化して一般に公開するために<p>
        <p> ・〜〜大学<p>
         <p>・鎮西学院大学（Nagasaki Uesleyan University<p>
+        <p>・吉野ゼミ</p>
         <p>の協力により作成されました。
     </p>
     <h3>お知らせ</h3>
     <p>・新しいお知らせはありません。2024/7/21</p>
+</body>
+</html>
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Archive</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.onload = function() {
+            if (window.innerWidth < 1024) {
+                document.body.classList.add('mobile-view');
+            } else {
+                document.body.classList.add('desktop-view');
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Digital Archive</h1>
+    <p>This is the homepage of the digital archive project.</p>
 </body>
 </html>
 

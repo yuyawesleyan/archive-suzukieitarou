@@ -46,6 +46,29 @@ container{
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+/* style.css */
+
+/* 共通のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+/* PC版のスタイル */
+body.desktop-view {
+    background-color: #ffffff;
+}
+
+/* モバイル版のスタイル */
+body.mobile-view {
+    background-color: #eeeeee;
+}
 
 
 }
