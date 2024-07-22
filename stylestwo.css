@@ -1,8 +1,43 @@
-/* styles.css */
+/* stylestwo.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #13eb5b;
+}
 
-/* IIIFビューアのコンテナのスタイル */
-#uv-container {
+/* ヘッダーのスタイル */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* メインコンテンツのスタイル */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* フッターのスタイル */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    height: 600px; /* ビューアの高さを指定 */
-    border: 1px solid #ddd; /* 枠線を追加（オプション） */
 }
