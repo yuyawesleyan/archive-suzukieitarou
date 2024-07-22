@@ -3,28 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新しいページのタイトル</title>
+    <title>suzukieitarou-digital</title>
     <link rel="stylesheet" href="styles.css"> <!-- CSSファイルがある場合 -->
+    
+    <!-- Universal Viewer のスタイルシート -->
+    <link rel="stylesheet" href="https://universalviewer.io/build/uv.css">
+    
+    <!-- Universal Viewer のスクリプト -->
+    <script src="https://universalviewer.io/build/uv.js"></script>
 </head>
 <body>
     <header>
-        <h1>新しいページへようこそ</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="newpage.html">新しいページ</a></li>
-            </ul>
-        </nav>
+        <h1>デジタルアーカイブへようこそ</h1>
     </header>
     
     <main>
-        <h2>このページの見出し</h2>
-        <p>このページに含まれる内容です。</p>
-        <button onclick="window.location.href='anotherpage.html'">他のページに移動</button>
+        <h2>鈴木栄太郎の未発表手書き原稿</h2>
+        <p>閲覧したい原稿をクリック！！</p>
+        <button onclick="window.location.href='index.html'">ホームに戻る</button>
+
+        <!-- IIIFビューアのコンテナ -->
+        <div id="uv-container" style="height: 600px;"></div>
     </main>
 
     <footer>
-        <p>&copy; 2024 あなたのサイト名</p>
+        <p>&copy; 2024 yuya.i digital-archive</p>
     </footer>
+    
+    <!-- Universal Viewer を初期化 -->
+    <script>
+        const uv = new UV({
+            // IIIF プレゼンテーションマニフェストのURLを指定
+            manifest: 'https://example.com/iiif/manifest.json',
+            // ビューアのコンテナを指定
+            container: '#uv-container'
+        });
+    </script>
 </body>
 </html>
+{
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    "@id": "https://example.com/iiif/manifest.json",
+    "@type": "Manifest",
+    "label": "Example Manifest",
+    "sequences": [
+        {
+            "@id": "https://example.com/iiif/sequence/normal",
+            "@type": "Sequence",
+            "label": "Current Page Order",
+            "canvases": [
+                {
+                    "@id": "https://example.com/iiif/canvas/1",
+                    "@type": "Canvas",
+                    "label": "Page 1",
+                    "width": 800,
+                    "height": 600,
+                    "images": [
+                        {
+                            "@id": "https://example.com/iiif/image/1",
+                            "@type": "Annotation",
+                            "motivation": "sc:painting",
+                            "resource": {
+                                "@type": "Image",
+                                "@id": "https://example.com/iiif/image/1/full/full/0/default.jpg",
+                                "service": {
+                                    "@context": "http://iiif.io/api/image/2/context.json",
+                                    "@id": "https://example.com/iiif/image/1",
+                                    "profile": "http://iiif.io/api/image/2/level2.json"
+                                }
+                            },
+                            "on": "https://example.com/iiif/canvas/1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

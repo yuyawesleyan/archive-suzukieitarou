@@ -24,7 +24,7 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>4つのボタンを配置</title>
+            <title>ボタンを配置</title>
             <style>
                 body {
                     
@@ -54,10 +54,10 @@
         </head>
         <body>
             <div id="button-container">
-                <button class="button" onclick="action1(pagetwo.html)">全てのアーカイブを見る</button>
-                <button class="button" onclick="action2()">鈴木栄太郎について</button>
-                <button class="button" onclick="action3()">制作・運用担当者</button>
-                <button class="button" onclick="action4()">WEBページ計画書</button>
+                <a href="pagetwo.html" class="button">全てのデジタルアーカイブを見る</a>
+                <a href="https://example.com/link2" class="button">鈴木栄太郎について</a>
+                <a href="https://example.com/link3" class="button">制作・運用担当者</a>
+                <a href="https://example.com/link4" class="button">WEBページ計画書</a>
             </div>
         
             <div id="action-result"></div>
@@ -109,40 +109,19 @@
     </style>
 </head>
 
-    <h2>本デジタルアーカイブについて</h2>
-    <p>本デジタルアーカイブは、日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿を中心とする資料をデジタル化して一般に公開するために<p>
-       <p> ・〜〜大学<p>
-        <p>・鎮西学院大学（Nagasaki Uesleyan University<p>
-        <p>・吉野ゼミ</p>
-        <p>の協力により作成されました。
-    </p>
-    <h3>お知らせ</h3>
-    <p>・新しいお知らせはありません。2024/7/21</p>
+<h2>本デジタルアーカイブについて</h2>
+<p>本デジタルアーカイブは、日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿を中心とする資料をデジタル化して一般に公開するために</p>
+<p>・〜〜大学</p>
+<p>・鎮西学院大学（Nagasaki Uesleyan University）</p>
+<p>・吉野ゼミ</p>
+<p>の協力により作成されました。</p>
+<h3>お知らせ</h3>
+<p>・新しいお知らせはありません。2024/7/21</p>
 </body>
 </html>
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Archive</title>
-    <link rel="stylesheet" href="style.css">
-    <script>
-        window.onload = function() {
-            if (window.innerWidth < 1024) {
-                document.body.classList.add('mobile-view');
-            } else {
-                document.body.classList.add('desktop-view');
-            }
-        };
-    </script>
-</head>
-<body>
-    <h1>Welcome to the Digital Archive</h1>
-    <p>This is the homepage of the digital archive project.</p>
-</body>
-</html>
+
+
+
 
 
 
@@ -152,5 +131,6 @@
 <footer>
     <p>&copy; 2024 yuya.i degital-archive</p>
 </footer>
+
 </body>
 </html>
