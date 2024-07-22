@@ -24,6 +24,7 @@ h1 {
 
 #search-container {
     flex-direction: center;
+
 }
 
 #search-input {
@@ -182,4 +183,5 @@ h4{
 .pickup-item h3 {
     font-size: 1.0em;
     margin: 15px 0;
+    text-align: center;
 }
