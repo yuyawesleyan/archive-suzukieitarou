@@ -1,10 +1,51 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+            padding: 50;
+            height: 100vh;
+            background: #f0f0f0;
+            text-align: left;
+}
+h1 {
+    color: #080707;
+    margin: 0px;   /* 上下左右にマージンを追加 */
+    font-size: 40px; /* フォントサイズを設定 */
+    text-align: left;
+    margin: 0px;
+
+
+    
+    }
+
+    
+
+
+p{
+    color: #131111;
+    margin: 10px;
+    font-size: 30;
+    text-align: center;
+   
+
+
+}
+/* 背景を追加 */
+body {
+    background-color: #f0f8ff; /* 薄い青色の背景 */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+body {
+    background-image: url('sunset.jpeg');
+    background-size: cover;/* 画像が画面全体に表示されるようにする */
+    background-position: center; /* 画像が中央に配置されるようにする */
+    background-repeat: no-repeat; /* 画像が繰り返し表示されないようにする */
+container{
+    background-color: rgba(255, 255, 255, 0.8); /* 白色の背景を80%の不透明度で設定 */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    color: #333;
+
 }
