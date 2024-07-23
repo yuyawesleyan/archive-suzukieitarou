@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人物紹介</title>
+    
+<style>
+    h1{
+        font-size: 25px;
+        color: black;
+        text-align: center;
+    }
+
+    p{
+        font-size: 20px
+        ;
+    }
+
+    container {
+    text-align: center;
+}
+
+container {
+    width: 80%; /* コンテナの幅を設定 */
+    text-align: center; /* デフォルトで中央揃え */
+}
+
+.profile {
+    display: flex;
+    align-items: center; /* 縦方向に中央揃え */
+    justify-content: flex-start; /* 左寄せ */
+    margin: 20px auto; /* 上下のマージンを追加し、左右を自動でセンタリング */
+}
+
+.profile-photo {
+    border-radius: 50%;
+    width: 100px; /* 画像の幅を100pxに設定 */
+    height: 100px; /* 画像の高さを100pxに設定 */
+    object-fit: cover;
+    margin-right: 20px; /* 画像と名前の間にスペースを追加 */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: flex-start; /* 左寄せ */
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: -20px; 
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #333; 
+    margin: 20px 0;
+    width: 100%; 
+}
+
+hr.second-line {
+    border: none;
+    border-top: 2px solid #333; 
+    margin: １00px 0; 
+    width: 30%; 
+}
+
+profile-text {
+    font-size: 16px;
+    line-height: 1.5; /* 行間を調整 */
+    margin-top: 10px; /* 横線と文章の間にスペースを追加 */
+}
+
+.profile-bio {
+    text-align: left; /* 略歴を左寄せ */
+    margin-top: 30px; /* 略歴セクションとプロフィールの間にスペースを追加 */
+}
+
+.profile-bio h2 {
+    font-size: 22px; /* 略歴見出しのフォントサイズ */
+    margin-bottom: 15px; /* 見出しとリストの間にスペースを追加 */
+}
+
+.profile-bio ul {
+    list-style-type: none; /* リストマーカーを削除 */
+    padding: 0; /* パディングをリセット */
+}
+
+.profile-bio li {
+    font-size: 16px; /* 略歴リスト項目のフォントサイズ */
+    margin-bottom: 10px; /* リスト項目間のスペースを追加 */
+}
+
+
+
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>社会学者である鈴木栄太郎についての紹介</h1>
+        <hr class="first-line">
+        <div class="profile">
+            <img src="zw.png" alt="顔写真" class="profile-photo">
+            <div class="profile-info">
+                <div class="profile-name">鈴木 栄太郎　(すずき・えいたろう)</div>
+                <hr class="second-line">
+                <div class="profile-text">
+                    鈴木　栄太郎（すずき・えいたろう）は、１８９４年長崎県壱岐郡郷ノ浦に生まれる。長崎県立壱岐中学校、第一高等学校を経て、１９２２年に東京帝国大学文学部を卒業後、京都帝国大学大学院に進学し米田庄太郎に師事。
+                    岐阜高等農林学校教授、京城帝国大学助教授を得て、１９４７年より北海道大学教授。また、１９４６年にはGHQの民間情報教育局顧問を務めた。
+                </div>
+            </div>
+        </div>
+        <div class="profile-bio">
+            <h2>略歴</h2>
+            <ul>
+                <li>・１８９４年 - 長崎県壱岐島に生まれる</li>
+                <li>・１９０１〜１９０８年 - 尋常小学校入学　１９０４年〜高等小学校</li>
+                <li>・１９０９〜１９１４年 - 厳原中学校入学</li>
+                <li>・１９１４〜１９１９年 - 厳原中学校卒業　第一高等学校入学一部乙類</li>
+                <li>・１９１９〜１９２３年 - 第一高等学校卒業　東京帝国大学入学</li>
+                <li>・１９２３年 - 東京帝国大学文学部卒業　京都帝国大学院入学　米田庄太郎に師事</li>
+                <li>・１９２４年 - 京都帝国大学院修士終了</li>
+                <li>・１９２５年 - 岐阜高等農林学校教授</li>
+                <li>・１９３３年 - 『農村社会学史』（刀江書院）</li>
+                <li>・１９４０年 - 『日本農村社会学原理』（時潮社）</li>
+                <li>・１９４２年 - 京城帝国大学助教授</li>
+                <li>・１９４４年 - 『朝鮮農村社会踏査記』（大阪屋号書店）</li>
+                <li>・１９４６年 - GHQの民間情報教育局顧問　１１月文学博士（東京大学）</li>
+                <li>・１９４７年 - 北海道大学教授</li>
+                <li>・１９４９年 - 『日本農村社会学要論』（時潮社）</li>
+                <li>・１９５７年 - 『都市社会学原理』（有斐閣）</li>
+                <li>・１９５８年 - 東洋大学教授</li>
+                <li>・１９６５年 - 和光大学教授</li>
+                <li>・１９６６年 - 死去</li>
+                <li>・１９７０年 - 『国民社会学原理ノート』</li>
+
+            
+            </ul>
+        </div>
+    </div>  
+</body>
+</html>

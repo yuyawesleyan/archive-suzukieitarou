@@ -1,9 +1,10 @@
 /* stylestwo.css */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #13eb5b;
+    background-color: #18c652;
 }
 
 /* ヘッダーのスタイル */
@@ -33,7 +34,7 @@ main {
 
 /* フッターのスタイル */
 footer {
-    background-color: #333;
+    background-color: #6f6a6a;
     color: #fff;
     text-align: center;
     padding: 10px 20px;
