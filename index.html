@@ -10,7 +10,7 @@
 
         #search-container {
             text-align: center;
-            margin: 0;
+            margin: 80px;
             padding: 0;
             height: 3vh;
             display: flex;
@@ -31,14 +31,14 @@
         }
 
         .search-result {
-            margin-top: 10px;
+            margin-top: 50px;
             background-color: #fff;
             padding: 10px;
             border: 1px solid #ddd;
         }
 
         #button-container {
-            text-align: center;
+            text-align: right;
         }
 
         .button {
@@ -64,17 +64,34 @@
             background-color: #f8f9fa;
             border-top: 1px solid #ddd;
         }
+
+        .subtitle {
+  font-size: 1.0em; 
+  margin: -20px 0; 
+  color: #333; 
+}
+
+.centered {
+  text-align: center; 
+}
+
+ul.shifted {
+  list-style-type: disc; 
+  list-style-position: inside; 
+  margin: 0 auto; 
+  padding-left: 20px; 
+  text-align: left; 
+  max-width: fit-content; 
+}
+
+
+
+
     </style>
 </head>
 <body>
     <h1>鈴木栄太郎の未発表手書き原稿｜デジタルアーカイブ</h1>
-    <p>日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝を中心とする資料。</p>
-    
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="検索...">
-        <button id="search-button">検索</button>
-        <div id="search-results"></div>
-    </div>
+    <p class="subtitle">日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝を中心とする資料。</p>
     
     <div id="button-container">
         <a href="pagetwo.html" class="button">全てのデジタルアーカイブを見る</a>
@@ -83,12 +100,21 @@
         <a href="pagefive.html" class="button">WEBページ計画書</a>
     </div>
 
-     <h2>本デジタルアーカイブについて</h2>
-    <p>本デジタルアーカイブは、日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿を中心とする資料をデジタル化して一般に公開するために</p>
-    <p>・〜〜大学</p>
-    <p>・鎮西学院大学（Nagasaki Uesleyan University）</p>
-    <p>・吉野ゼミ</p>
-    <p>の協力により作成されました。</p>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="検索...">
+        <button id="search-button">検索</button>
+        <div id="search-results"></div>
+    </div>
+
+    <h2 class="centered">本デジタルアーカイブについて</h2>
+    <p class="centered">本デジタルアーカイブは、日本の社会学者であった鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿を中心とする資料をデジタル化して一般に公開するために</p>
+    <ul class="shifted">
+      <li>〜〜大学</li>
+      <li>鎮西学院大学（Nagasaki Uesleyan University）</li>
+      <li>吉野ゼミ</li>
+    </ul>
+    <p class="centered">の協力により作成されました。</p>
+    
 <section class="announcement">
     <h3>お知らせ</h3>
     <p>・制作を開始。2024/7/22</p>

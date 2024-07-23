@@ -93,6 +93,25 @@ profile-text {
     margin-bottom: 10px; /* リスト項目間のスペースを追加 */
 }
 
+footer {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+        }
+
+        .heading {
+  font-size: 1.2em; 
+  font-weight: bold;
+  margin: 100px 0; /* 上下のマージンを調整 */
+}
+
+.near-heading {
+  margin: 40px 0; /* 上下のマージンを調整 */
+  font-weight: normal; 
+  color: #333; 
+}
 
 
 </style>
@@ -113,6 +132,26 @@ profile-text {
                 </div>
             </div>
         </div>
+        <h3 class="heading">各種ダウンロードファイル</h3>
+<p class="near-heading">鈴木栄太郎の略歴</p>
+<a href="eitarou.pdf" download class="download-button">PDFファイルをダウンロード</a>
+
+<style>
+.download-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.download-button:hover {
+  background-color: #0056b3;
+}
+</style>
+
+
         <div class="profile-bio">
             <h2>略歴</h2>
             <ul>
@@ -142,4 +181,7 @@ profile-text {
         </div>
     </div>  
 </body>
+<footer>
+    <p>&copy; 2024 Created by Yuya.I</p>
+</footer>
 </html>
