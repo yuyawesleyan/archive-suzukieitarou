@@ -104,14 +104,9 @@ footer {
         .heading {
   font-size: 1.2em; 
   font-weight: bold;
-  margin: 100px 0; /* 上下のマージンを調整 */
+  margin: 0 0; 
 }
 
-.near-heading {
-  margin: 40px 0; /* 上下のマージンを調整 */
-  font-weight: normal; 
-  color: #333; 
-}
 
 
 </style>
@@ -119,7 +114,7 @@ footer {
 </head>
 <body>
     <div class="container">
-        <h1>社会学者である鈴木栄太郎についての紹介</h1>
+        <h1>鈴木栄太郎についての紹介</h1>
         <hr class="first-line">
         <div class="profile">
             <img src="zw.png" alt="顔写真" class="profile-photo">
@@ -132,23 +127,8 @@ footer {
                 </div>
             </div>
         </div>
-        <h3 class="heading">各種ダウンロードファイル</h3>
-<p class="near-heading">鈴木栄太郎の略歴</p>
-<a href="eitarou.pdf" download class="download-button">PDFファイルをダウンロード</a>
 
-<style>
-.download-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #007bff;
-  text-decoration: none;
-  border-radius: 5px;
-}
-.download-button:hover {
-  background-color: #0056b3;
-}
+
 </style>
 
 
@@ -181,6 +161,76 @@ footer {
         </div>
     </div>  
 </body>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダウンロードファイル</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f8f8f8;
+        }
+
+        .heading {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .near-heading {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h3 class="heading">各種ダウンロードファイル</h3>
+
+    <div class="container">
+        <p class="near-heading">鈴木栄太郎の略歴</p>
+        <a href="eitarou.pdf" download class="download-button">PDFファイルをダウンロード</a>
+    </div>
+
+    <div class="container">
+        <p class="near-heading">鈴木栄太郎の著書</p>
+        <a href="book.pdf" download class="download-button">PDFファイルをダウンロード</a>
+    </div>
+</body>
+</html>
+
+     
+      
+        </html>
+        
+<style>
 <footer>
     <p>&copy; 2024 Created by Yuya.I</p>
 </footer>
