@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検索結果</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        #search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        #search-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #search-results {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .result-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            width: calc(33% - 40px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .result-card h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .result-card p {
+            color: #555;
+        }
+
+        .result-card a {
+            text-decoration: none;
+            color: inherit; /* リンクの色を継承 */
+        }
+
+        .result-card a:hover h3 {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .result-card {
+                width: calc(50% - 40px);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .result-card {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="search-container">
+        <form action="search_results.html" method="GET">
+            <input type="text" name="query" id="search-input" placeholder="検索..." value="">
+            <button type="submit" id="search-button">検索</button>
+        </form>
+    </div>
+
+    <h1>検索結果</h1>
+    <div id="search-results"></div>
+
+    <script>
+        // URLから検索クエリを取得
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get('query');
+
+        // ダミーデータを使用して検索結果を表示する例
+        const data = [
+            {
+                title: "鈴木栄太郎の未発表手書き原稿",
+                content: "鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿について...",
+                url: "detail1.html" // リンク先のURL
+            },
+            {
+                title: "鈴木栄太郎について",
+                content: "鈴木栄太郎は、日本の社会学者で...",
+                url: "pagethree.html" 
+            },
+            
+            {
+                title: "WEB計画書",
+                content: "プロジェクト概要 鈴木栄太郎の未発表手書き原稿をデジタルアーカイブ化し...",
+                url:"pagefive.html"
+            },
+
+
+
+        ];
+
+        const resultsDiv = document.getElementById('search-results');
+        resultsDiv.innerHTML = "";
+
+        let found = false;
+        data.forEach(item => {
+            if (item.title.includes(query) || item.content.includes(query)) {
+                const resultDiv = document.createElement('div');
+                resultDiv.classList.add('result-card');
+                resultDiv.innerHTML = `
+                    <a href="${item.url}">
+                        <h3>${item.title}</h3>
+                        <p>${item.content}</p>
+                    </a>`;
+                resultsDiv.appendChild(resultDiv);
+                found = true;
+            }
+        });
+
+        if (!found) {
+            resultsDiv.innerHTML = "<p>検索結果が見つかりませんでした。</p>";
+        }
+    </script>
+</body>
+</html>
