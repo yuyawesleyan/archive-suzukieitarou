@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>検索結果</title>
+    <title></title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,7 +58,7 @@
 
         .result-card a {
             text-decoration: none;
-            color: inherit; /* リンクの色を継承 */
+            color: inherit; 
         }
 
         .result-card a:hover h3 {
@@ -91,16 +91,14 @@
     <div id="search-results"></div>
 
     <script>
-        // URLから検索クエリを取得
         const params = new URLSearchParams(window.location.search);
         const query = params.get('query');
 
-        // ダミーデータを使用して検索結果を表示する例
         const data = [
             {
                 title: "鈴木栄太郎の未発表手書き原稿",
                 content: "鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿について...",
-                url: "detail1.html" // リンク先のURL
+                url: "detail1.html" 
             },
             {
                 title: "鈴木栄太郎について",

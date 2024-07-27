@@ -103,7 +103,7 @@ ul.shifted {
     <title>検索ページ</title>
 </head>
 <body>
-    <h1>検索ページ</h1>
+    <h1></h1>
     <form action="search_results.html" method="GET">
         <input type="text" name="query" id="search-input" placeholder="検索...">
         <button type="submit" id="search-button">検索</button>
@@ -147,40 +147,6 @@ ul.shifted {
         <p>&copy; 2024 Created by Yuya.I</p>
     </footer>
 
-    <script>
-        document.getElementById("search-button").addEventListener("click", function() {
-            var input = document.getElementById("search-input").value.toLowerCase();
-            var results = document.getElementById("search-results");
-
-            
-            var data = [
-                {
-                    title: "鈴木栄太郎の未発表手書き原稿",
-                    content: "鈴木栄太郎（すずき・えいたろう）の未発表手書き自伝原稿について..."
-                },
-                {
-                    title: "鈴木栄太郎について",
-                    content: "鈴木栄太郎は、日本の社会学者で..."
-                },
-                // 追加のデータ
-            ];
-
-            results.innerHTML = "";
-            var found = false;
-            data.forEach(function(item) {
-                if (item.title.toLowerCase().includes(input) || item.content.toLowerCase().includes(input)) {
-                    var resultDiv = document.createElement("div");
-                    resultDiv.className = "search-result";
-                    resultDiv.innerHTML = "<h3>" + item.title + "</h3><p>" + item.content + "</p>";
-                    results.appendChild(resultDiv);
-                    found = true;
-                }
-            });
-
-            if (!found) {
-                results.innerHTML = "<p>検索結果が見つかりませんでした。</p>";
-            }
-        });
-    </script>
+    
 </body>
 </html>
