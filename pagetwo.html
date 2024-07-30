@@ -1,64 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <style>
-        /* 内部CSSの例 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fbfafa;
+            background: linear-gradient(135deg, #f0f2f5, #cfd9df);
+            color: #333;
         }
 
         header {
-            background-color: #333;
+            background-color: #282c34;
             color: #fff;
-            padding: 10px 20px;
+            padding: 20px;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
         }
 
         main {
-            padding: 20px;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
 
-
-        h1{
-            color: #040404;
+        .box {
+            background-color: #fff;
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            font-size: 30px;
-
         }
 
-        h2{
-            text-align: left;
-            font-size: 15px;
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .box a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
         }
 
         footer {
             text-align: left;
-            margin-top: 20px;
             padding: 10px;
             background-color: #f8f9fa;
             border-top: 1px solid #ddd;
         }
 
-
     </style>
- <main>
-    <h1>デジタルアーカイブへようこそ</h1>
-
- </main>
-
+</head>
+<body>
+    <header>
+        <h1>デジタルアーカイブへようこそ</h1>
+    </header>
+    
     <main>
-        <h2>このページはIIIFを利用したページです。</h2>
-       
+        <div class="box">
+            <a href="#archive1">
+                <h2>鈴木栄太郎の未発表手書き原稿｜デジタルアーカイブ</h2>
+                <p>IIIFを利用したページです</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="#archive2">
+                <h2>🔒活字化ページ🔑</h2>
+                <p>一般非公開ページです</p>
+             </p>管理者にパスワードを要求してください</p>
+            </a>
+        </div>
+        <!--リンクボックスを追加OK 最終更新yuyaikeda-->
     </main>
-
-
-
+    
     <footer>
         <p>&copy; 2024 Created by Yuya.I</p>
     </footer>

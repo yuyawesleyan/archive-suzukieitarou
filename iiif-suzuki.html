@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IIIF Viewer Example</title>
+  <!-- Universal ViewerのCSS -->
+  <link rel="stylesheet" href="https://universalviewer.io/uv3/uv.min.css">
+  <!-- Universal ViewerのJavaScript -->
+  <script src="https://universalviewer.io/uv3/uv.min.js"></script>
+</head>
+<body>
+  <h1>IIIF Viewer Example</h1>
+  <div id="uv" style="width: 800px; height: 600px; border: 1px solid #000;"></div>
+
+  <script>
+    // IIIFマニフェストのURL（Google Cloud Storageの公開URL）
+    const manifestUri = 'https://storage.googleapis.com/archive-eirarou/manifest.json.rtf';
+
+    // Universal Viewerの初期化
+    const viewer = UV.init(document.getElementById('uv'), {
+      iiifResourceUri: manifestUri,
+      configUri: manifestUri
+    });
+  </script>
+</body>
+</html>
