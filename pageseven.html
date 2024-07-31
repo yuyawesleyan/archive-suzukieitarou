@@ -52,41 +52,47 @@
         .button {
             display: inline-block;
             margin: 0 0.5rem;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.5rem;
             color: #fff;
             background-color: #007bff;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .button:active {
+            background-color: #003d7a;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>鈴木栄太郎の未発表手書き原稿</h1>
+        <h1>鈴木栄太郎の手書き自伝</h1>
     </header>
 
     <main>
         <section id="scan">
             <h2>スキャン原稿</h2>
-            <iframe src="" frameborder="0"></iframe>
+            <iframe src="https://online.fliphtml5.com/hgttx/xuoj/" frameborder="0"></iframe>
         </section>
 
         <section id="text">
             <h2>活字化テキスト</h2>
-            <iframe src="https://online.fliphtml5.com/hgttx/axae/" frameborder="0"></iframe>
+            <iframe src="https://online.fliphtml5.com/hgttx/ocvn/" frameborder="0"></iframe>
         </section>
     </main>
 
     <footer>
-        <div class="pdf-download">
-            <a href="スキャン原稿のPDFファイルのURL" class="button" download>スキャン原稿 PDF ダウンロード</a>
-            <a href="活字化テキストのPDFファイルのURL" class="button" download>活字化テキスト PDF ダウンロード</a>
-        </div>
+        <p>&copy; 2024 Created by Yuya.I</p>
     </footer>
 </body>
 </html>
+
