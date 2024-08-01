@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームページ</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+       
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative; 
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        
+        .notice {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #FFC107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        
+        .login-info {
+            position: absolute;
+            top: 10px;
+            right: 100px; 
+            background-color: #28A745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #DC3545;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+
+        
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #007BFF;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            color: white;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="notice">お知らせ: 新機能が追加されました！</div>
+        <div class="login-info" id="login-info">ログイン: 読み込み中...</div>
+        <button class="logout-button" id="logout-button">ログアウト</button>
+        <h1>みんなの翻刻広場</h1>
+       
+    </header>
+    <main>
+        <section id="register">
+            <h2>翻刻を始める</h2>
+            <p>プロジェクトを登録して、翻刻作業を始めましょう。</p>
+            <a href="register.html" class="button">翻刻する</a>
+        </section>
+        <section id="view">
+            <h2>みんなが作った翻刻を見る</h2>
+            <p>他の人が作成した翻刻データを確認できます。</p>
+            <a href="view.html" class="button">翻刻を見る</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Created by Yuya.I</p>
+    </footer>
+
+    <script>
+        
+        var userName = localStorage.getItem('userName') || 'ゲスト';
+
+        
+        document.getElementById('login-info').textContent = 'こんにちは ' + userName + 'さん';
+
+        
+        document.getElementById('logout-button').addEventListener('click', function() {
+            
+            localStorage.removeItem('userName');
+            window.location.href = 'skypage.html'; 
+        });
+    </script>
+</body>
+</html>

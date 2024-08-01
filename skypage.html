@@ -61,7 +61,7 @@
 <body>
     <div class="container">
         <div id="auth-form">
-            <h2 id="form-title">登録</h2>
+            <h2 id="form-title">参加する「JOIN」</h2>
             <form id="register-form">
                 <input type="text" id="username" placeholder="ユーザー名" required>
                 <input type="email" id="email" placeholder="メールアドレス" required>
@@ -129,8 +129,8 @@
             const user = users.find(user => user.email === email && user.password === password);
 
             if (user) {
-                document.getElementById('login-message').textContent = 'ログイン成功！';
-                // ログイン後にホームページにリダイレクトする処理をここに追加できます。
+                localStorage.setItem('userName', user.username); // ユーザー名を保存
+                window.location.href = 'skypage2.html'; // ホームページにリダイレクト
             } else {
                 document.getElementById('login-message').textContent = 'メールアドレスまたはパスワードが間違っています';
             }
