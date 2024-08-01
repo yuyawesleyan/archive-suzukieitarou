@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ホームページ</title>
     <style>
-        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,13 +13,19 @@
             background-color: #f4f4f4;
         }
 
-       
         header {
             background-color: #007BFF;
             color: white;
-            padding: 10px 0;
+            padding: 10px 20px;
             text-align: center;
-            position: relative; 
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
         }
 
         header h1 {
@@ -28,32 +33,7 @@
             font-size: 2em;
         }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        
         .notice {
-            position: absolute;
-            top: 10px;
-            left: 10px;
             background-color: #FFC107;
             color: #333;
             padding: 5px 10px;
@@ -61,23 +41,18 @@
             font-size: 0.9em;
         }
 
-        
         .login-info {
-            position: absolute;
-            top: 10px;
-            right: 100px; 
             background-color: #28A745;
             color: white;
             padding: 5px 10px;
             border-radius: 3px;
             font-size: 0.9em;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
         }
 
-        
         .logout-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
             background-color: #DC3545;
             color: white;
             padding: 5px 10px;
@@ -85,13 +60,28 @@
             border-radius: 3px;
             cursor: pointer;
             font-size: 0.9em;
+            position: absolute;
+            bottom: -50px;
+            right: -20px;
         }
 
         .logout-button:hover {
             background-color: #c82333;
         }
 
-        
+        .activity {
+            background-color: #ddf7db;
+            color: #333;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            width: 170px;
+            text-align: left;
+            position: absolute;
+            right: 0px;
+            top: 100px;
+        }
+
         main {
             padding: 20px;
             text-align: center;
@@ -106,67 +96,99 @@
             color: #007BFF;
         }
 
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
-            color: white;
-            background-color: #007BFF;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        
         footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
+            background-color: #f4f4f4;
+            color: rgb(13, 13, 13);
+            text-align: left;
             padding: 10px 0;
             position: absolute;
             bottom: 0;
             width: 100%;
         }
+
+        .nav-box {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .nav-box a {
+            display: block;
+            width: 120px;
+            padding: 10px;
+            margin: 0 10px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+           
+            
+
+        }
+
+        .nav-box a:hover {
+            background-color: #0056b3;
+        }
+
+        .announcement {
+            background-color: #FFC107;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="notice">お知らせ: 新機能が追加されました！</div>
-        <div class="login-info" id="login-info">ログイン: 読み込み中...</div>
-        <button class="logout-button" id="logout-button">ログアウト</button>
+        <div class="header-content">
+            <div class="login-info" id="login-info">ログイン: 読み込み中...</div>
+            <button class="logout-button" id="logout-button">ログアウト</button>
+        </div>
         <h1>みんなの翻刻広場</h1>
-       
     </header>
     <main>
-        <section id="register">
-            <h2>翻刻を始める</h2>
-            <p>プロジェクトを登録して、翻刻作業を始めましょう。</p>
-            <a href="register.html" class="button">翻刻する</a>
-        </section>
-        <section id="view">
-            <h2>みんなが作った翻刻を見る</h2>
-            <p>他の人が作成した翻刻データを確認できます。</p>
-            <a href="view.html" class="button">翻刻を見る</a>
-        </section>
+        <div class="nav-box">
+            <a href="home.html">ホーム</a>
+            <a href="projects.html">プロジェクト</a>
+            <a href="guide.html">ご案内</a>
+        </div>
+        <div class="announcement">
+            <h2>お知らせ</h2>
+            <p>新機能が追加されました！</p>
+        </div>
+        
     </main>
     <footer>
         <p>&copy; 2024 Created by Yuya.I</p>
     </footer>
 
     <script>
-        
+        // ユーザー名の取得と表示
         var userName = localStorage.getItem('userName') || 'ゲスト';
-
-        
         document.getElementById('login-info').textContent = 'こんにちは ' + userName + 'さん';
 
-        
+        // 作業履歴の取得と表示
+        function updateActivity() {
+            var totalTime = localStorage.getItem('totalTime') || '0時間';
+            var editing = localStorage.getItem('editing') || 'なし';
+            var recentEdit = localStorage.getItem('recentEdit') || 'なし';
+
+            document.getElementById('total-time').textContent = '合計ログイン時間: ' + totalTime;
+            document.getElementById('editing').textContent = '編集中: ' + editing;
+            document.getElementById('recent-edit').textContent = '最近の編集: ' + recentEdit;
+        }
+
+        updateActivity();
+
+        // ログアウト処理
         document.getElementById('logout-button').addEventListener('click', function() {
-            
             localStorage.removeItem('userName');
+            localStorage.removeItem('totalTime');
+            localStorage.removeItem('editing');
+            localStorage.removeItem('recentEdit');
             window.location.href = 'skypage.html'; 
         });
     </script>
