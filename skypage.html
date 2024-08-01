@@ -3,299 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>翻刻研究サイト</title>
+    <title>ユーザー登録とログイン</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #eaeaea;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
+            background-color: #f0f0f0;
         }
-
         .container {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 400px;
+            width: 100%;
+            background: white;
             padding: 20px;
-            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
-
-        h1 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 20px;
+        h2 {
+            margin-top: 0;
         }
-
-        input, button, select, textarea {
-            width: 80%;
-            margin: 10px auto;
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            margin-bottom: 10px;
             padding: 10px;
-            font-size: 16px;
-            display: block;
-            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
-
         button {
-            background-color: #007bff;
-            color: #fff;
+            padding: 10px;
             border: none;
-            cursor: pointer;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
         }
-
         button:hover {
             background-color: #0056b3;
         }
-
-        #transcriptions {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            max-height: 500px;
-            overflow-y: auto;
-            text-align: left;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        #image-container {
-            margin: 20px 0;
+        #toggle-form {
+            margin-top: 10px;
+            color: #007BFF;
+            cursor: pointer;
             text-align: center;
         }
-
-        #image-container img {
-            max-width: 100%;
-            max-height: 300px;
-        }
-
-        .content {
+        .message {
+            color: red;
             text-align: center;
-        }
-
-        .info {
-            text-align: left;
-            margin-top: 20px;
-            font-size: 16px;
-            color: #555;
-        }
-
-        .transcription-entry {
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .transcription-entry img {
-            max-width: 100%;
-            max-height: 200px;
-            display: block;
-            margin: 10px auto;
-        }
-
-        .transcription-entry p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
-
-        .transcription-entry .username {
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 登録ページ -->
-        <div id="register-page" class="page">
-            <h1>翻刻研究サイトへようこそ</h1>
+        <div id="auth-form">
+            <h2 id="form-title">登録</h2>
             <form id="register-form">
-                <input type="text" id="username" placeholder="ユーザー名を入力" required>
-                <input type="password" id="password" placeholder="パスワードを入力" required>
-                <button type="button" onclick="register()">登録</button>
+                <input type="text" id="username" placeholder="ユーザー名" required>
+                <input type="email" id="email" placeholder="メールアドレス" required>
+                <input type="password" id="password" placeholder="パスワード" required>
+                <button type="submit">登録</button>
+                <p class="message" id="register-message"></p>
             </form>
-            <p>既にアカウントをお持ちの方は <a href="#" onclick="showLogin()">こちら</a> からログイン</p>
-        </div>
-
-        <!-- ログインページ -->
-        <div id="login-page" class="page hidden">
-            <h1>ログイン</h1>
-            <form id="login-form">
-                <input type="text" id="login-username" placeholder="ユーザー名を入力" required>
-                <input type="password" id="login-password" placeholder="パスワードを入力" required>
-                <button type="button" onclick="login()">ログイン</button>
+            <form id="login-form" style="display: none;">
+                <input type="email" id="login-email" placeholder="メールアドレス" required>
+                <input type="password" id="login-password" placeholder="パスワード" required>
+                <button type="submit">ログイン</button>
+                <p class="message" id="login-message"></p>
             </form>
-        </div>
-
-        <!-- ホームページ -->
-        <div id="home-page" class="page hidden">
-            <h1>ホーム</h1>
-            <div class="content">
-                <p>翻刻研究サイトへようこそ。このサイトでは、歴史的な文書や手稿の翻刻を行うことができます。</p>
-                <p>以下のボタンをクリックして、翻刻の作業を開始したり、他のユーザーが作成した翻刻を閲覧したりできます。</p>
-                <button onclick="navigateTo('transcribe-page')">翻刻する</button>
-                <button onclick="navigateTo('view-transcriptions-page')">みんなが作った翻刻を見る</button>
-            </div>
-            <div class="info">
-                <h2>サイトについて</h2>
-                <p>このサイトは、歴史的な文書や手稿をデジタル化し、誰でもアクセスして翻刻作業に参加できることを目的としています。翻刻は、専門家や研究者だけでなく、一般の方々にも参加していただける活動です。</p>
-                <h2>使い方</h2>
-                <p>まずは、翻刻したいファイルを選択してください。選択したファイルの画像が表示されますので、その画像を見ながら文字を入力してください。翻刻が完了したら、「保存」ボタンをクリックして、翻刻データを保存します。</p>
-                <h2>ログアウト</h2>
-                <p>翻刻作業が終わったら、ログアウトすることをお勧めします。ログアウトするには、以下のボタンをクリックしてください。</p>
-                <button onclick="logout()">ログアウト</button>
-            </div>
-        </div>
-
-        <!-- 翻刻ページ -->
-        <div id="transcribe-page" class="page hidden">
-            <h1>翻刻する</h1>
-            <select id="file-select" onchange="displayImage()">
-                <option value="file1">ファイル 1</option>
-                <option value="file2">ファイル 2</option>
-                <option value="file3">ファイル 3</option>
-                <!-- 追加のファイルオプション -->
-            </select>
-            <div id="image-container">
-                <img id="file-image" src="" alt="翻刻対象の画像">
-            </div>
-            <textarea id="transcribe-text" placeholder="ここに翻刻する文字を入力"></textarea>
-            <button onclick="saveTranscription()">保存</button>
-            <button onclick="navigateTo('home-page')">戻る</button>
-        </div>
-
-        <!-- 翻刻表示ページ -->
-        <div id="view-transcriptions-page" class="page hidden">
-            <h1>みんなが作った翻刻</h1>
-            <select id="view-file-select" onchange="displayTranscriptions()">
-                <option value="file1">ファイル 1</option>
-                <option value="file2">ファイル 2</option>
-                <option value="file3">ファイル 3</option>
-                <!-- 追加のファイルオプション -->
-            </select>
-            <div id="transcriptions">
-                <!-- 翻刻データがここに表示されます -->
-            </div>
-            <button onclick="navigateTo('home-page')">戻る</button>
+            <p id="toggle-form">ログイン画面に切り替え</p>
         </div>
     </div>
-
     <script>
-        let transcriptions = JSON.parse(localStorage.getItem('transcriptions')) || {};
-        let imagePaths = {
-            file1: 'path/to/file1.jpg',
-            file2: 'path/to/file2.jpg',
-            file3: 'path/to/file3.jpg',
-            // 他のファイルのパスを追加
-        };
+        document.getElementById('toggle-form').addEventListener('click', () => {
+            const registerForm = document.getElementById('register-form');
+            const loginForm = document.getElementById('login-form');
+            const formTitle = document.getElementById('form-title');
+            
+            if (registerForm.style.display === 'none') {
+                registerForm.style.display = 'block';
+                loginForm.style.display = 'none';
+                formTitle.textContent = '登録';
+                document.getElementById('toggle-form').textContent = 'ログイン画面に切り替え';
+                document.getElementById('register-message').textContent = '';
+                document.getElementById('login-message').textContent = '';
+            } else {
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+                formTitle.textContent = 'ログイン';
+                document.getElementById('toggle-form').textContent = '登録画面に切り替え';
+                document.getElementById('register-message').textContent = '';
+                document.getElementById('login-message').textContent = '';
+            }
+        });
 
-        function register() {
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
             const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            if (username && password) {
-                localStorage.setItem('username', username);
-                localStorage.setItem('password', password);
-                navigateTo('home-page');
-            }
-        }
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.find(user => user.email === email);
 
-        function login() {
-            const username = document.getElementById('login-username').value;
+            if (userExists) {
+                document.getElementById('register-message').textContent = 'このメールアドレスはすでに登録されています';
+                return;
+            }
+
+            users.push({ username, email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            document.getElementById('register-message').textContent = '登録成功！ログイン画面に切り替えてください';
+        });
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
 
-            const storedUsername = localStorage.getItem('username');
-            const storedPassword = localStorage.getItem('password');
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(user => user.email === email && user.password === password);
 
-            if (username === storedUsername && password === storedPassword) {
-                navigateTo('home-page');
+            if (user) {
+                document.getElementById('login-message').textContent = 'ログイン成功！';
+                // ログイン後にホームページにリダイレクトする処理をここに追加できます。
             } else {
-                alert('ユーザー名またはパスワードが間違っています');
+                document.getElementById('login-message').textContent = 'メールアドレスまたはパスワードが間違っています';
             }
-        }
-
-        function navigateTo(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-            document.getElementById(pageId).classList.remove('hidden');
-
-            if (pageId === 'view-transcriptions-page') {
-                displayTranscriptions();
-            } else if (pageId === 'transcribe-page') {
-                displayImage();
-            }
-        }
-
-        function displayImage() {
-            const file = document.getElementById('file-select').value;
-            const image = document.getElementById('file-image');
-            image.src = imagePaths[file] || '';
-        }
-
-        function saveTranscription() {
-            const file = document.getElementById('file-select').value;
-            const text = document.getElementById('transcribe-text').value;
-            const username = localStorage.getItem('username');
-            const timestamp = new Date().toISOString(); // 現在の日時を取得
-
-            if (!transcriptions[file]) {
-                transcriptions[file] = [];
-            }
-
-            if (text) {
-                transcriptions[file].push({
-                    username: username,
-                    image: imagePaths[file],
-                    text: text,
-                    timestamp: timestamp
-                });
-                localStorage.setItem('transcriptions', JSON.stringify(transcriptions));
-                document.getElementById('transcribe-text').value = '';
-                alert('翻刻が保存されました！');
-            }
-        }
-
-        function displayTranscriptions() {
-            const file = document.getElementById('view-file-select').value;
-            const transcriptionsDiv = document.getElementById('transcriptions');
-            transcriptionsDiv.innerHTML = '';
-
-            if (transcriptions[file] && transcriptions[file].length > 0) {
-                transcriptions[file].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-                transcriptionsDiv.innerHTML = transcriptions[file].map(entry => `
-                    <div class="transcription-entry">
-                        <p class="username">${entry.username}</p>
-                        <img src="${entry.image}" alt="翻刻した写真">
-                        <p>${entry.text}</p>
-                        <p><small>${new Date(entry.timestamp).toLocaleString()}</small></p>
-                    </div>
-                `).join('');
-            } else {
-                transcriptionsDiv.innerHTML = '<p>翻刻データはまだありません。</p>';
-            }
-        }
-
-        function showLogin() {
-            navigateTo('login-page');
-        }
-
-        function logout() {
-            navigateTo('register-page');
-        }
-
-        // 初回ロード時にログイン状態を確認
-        window.onload = function() {
-            const username = localStorage.getItem('username');
-            if (username) {
-                navigateTo('home-page');
-            } else {
-                navigateTo('register-page');
-            }
-        }
+        });
     </script>
 </body>
 </html>
