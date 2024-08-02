@@ -75,7 +75,7 @@
     </header>
     <main>
         <section class="project-list">
-            <a href="project1.html" class="project-item">
+            <a href="nextselect1.html" class="project-item">
                 <img src="１１１１.png" alt="プロジェクト画像1">
                 <div class="project-details">
                     <h2>釜山の姉の家</h2>
@@ -91,7 +91,22 @@
             </a>
             
         </section>
+
     </main>
+    <script>
+        // サーバーサイドで進捗データを受け取るための例
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/getProgress')  // サーバーから進捗データを取得
+                .then(response => response.json())
+                .then(data => {
+                    const progressBar = document.getElementById('progress-bar');
+                    progressBar.style.width = `${data.progress}%`;
+                    progressBar.textContent = `${data.progress}%`;
+                })
+                .catch(error => console.error('エラー:', error));
+        });
+    </script>
+    
     <footer>
         <p>© 2024 Created by Yuya.I </p>
     </footer>

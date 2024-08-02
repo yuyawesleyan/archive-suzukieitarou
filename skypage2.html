@@ -242,24 +242,21 @@
     </footer>
 
     <script>
-        function displayTranscriptions() {
-            let displayDiv = document.getElementById('transcription-display');
-            displayDiv.innerHTML = '';
-            
-            // localStorageからデータを取得し表示
-            Object.keys(localStorage).forEach(key => {
-                if (key.startsWith('transcription_')) {
-                    let transcriptionText = localStorage.getItem(key);
-                    let projectId = key.split('_')[1];
-                    let transcriptionId = key.split('_')[2];
-                    let div = document.createElement('div');
-                    div.innerHTML = `<h3>プロジェクト${projectId} 翻刻${transcriptionId}</h3><p>${transcriptionText}</p>`;
-                    displayDiv.appendChild(div);
-                }
-            });
-        }
-
-        displayTranscriptions();
+        // サーバーサイドでデータを受け取るための例
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/getTimeline')  // サーバーからタイムラインデータを取得
+                .then(response => response.json())
+                .then(data => {
+                    const timeline = document.getElementById('timeline');
+                    data.forEach(entry => {
+                        const item = document.createElement('div');
+                        item.textContent = `${entry.username} ${entry.message}: ${entry.transcription}`;
+                        timeline.appendChild(item);
+                    });
+                })
+                .catch(error => console.error('エラー:', error));
+        });
     </script>
+    
 </body>
 </html>
