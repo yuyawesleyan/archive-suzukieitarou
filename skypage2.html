@@ -75,11 +75,11 @@
             padding: 10px;
             border-radius: 3px;
             font-size: 0.9em;
-            width: 170px;
+            width: 250px;
             text-align: left;
             position: absolute;
             right: 0px;
-            top: 100px;
+            top: 200px;
         }
 
         main {
@@ -122,9 +122,6 @@
             text-decoration: none;
             border-radius: 5px;
             text-align: center;
-           
-            
-
         }
 
         .nav-box a:hover {
@@ -132,13 +129,20 @@
         }
 
         .announcement {
-            background-color: #FFC107;
-            color: #333;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            text-align: center;
-        }
+    background-color: #b3b2ae;
+    color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    text-align: center;
+    width: 500px; 
+    height: 200px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
     </style>
 </head>
 <body>
@@ -159,7 +163,11 @@
             <h2>お知らせ</h2>
             <p>新機能が追加されました！</p>
         </div>
-        
+        <div class="activity" id="activity">
+            <p id="total-time">合計ログイン時間: 読み込み中...</p>
+            <p id="editing">編集中: 読み込み中...</p>
+            <p id="recent-edit">最近の編集: 読み込み中...</p>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Created by Yuya.I</p>
@@ -189,7 +197,7 @@
             localStorage.removeItem('totalTime');
             localStorage.removeItem('editing');
             localStorage.removeItem('recentEdit');
-            window.location.href = 'skypage.html'; 
+            window.location.href = 'index.html'; 
         });
     </script>
 </body>
