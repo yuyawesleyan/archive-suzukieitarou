@@ -15,7 +15,7 @@
         header {
             background-color: #007BFF;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 30px;
             text-align: center;
             position: relative;
         }
@@ -35,20 +35,23 @@
             border-radius: 3px;
             font-size: 0.9em;
         }
-        .login-info, .logout-button {
+        .login-info{
             background-color: #28A745;
             color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
+            padding: 10px 15px;
+            border-radius: 15px;
             font-size: 0.9em;
             cursor: pointer;
             position: absolute;
-            bottom: -20px;
+            bottom: 45px;
+            left: 300px;
         }
         .logout-button {
             background-color: #DC3545;
-            bottom: -50px;
-            right: -20px;
+            bottom: -250px;
+            right: 0px;
+            padding: 10px 15px;
+            border-radius: 15px;
         }
         .logout-button:hover {
             background-color: #c82333;
@@ -78,194 +81,150 @@
         }
         .nav-box a {
             display: block;
-            width: 120px;
-            padding: 10px;
-            margin: 0 10px;
+            width: 150px;
+            padding: 0px;
+            margin: 0 30px;
             background-color: #007BFF;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 10px;
             text-align: center;
         }
         .nav-box a:hover {
             background-color: #0056b3;
         }
+
         .announcement {
-            background-color: #e9ecef;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-top: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 1000px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    background-color: #e9ecef;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    height: auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: flex-start; 
+}
+
+.announcement h3 {
+    margin: 0; 
+    font-size: 1.5em;
+    font-weight: bold; 
+    color: #f72222; 
+    text-align: left; 
+    width: 100%; 
+}
+
+.announcement p {
+    margin: 10px 0 0; 
+    font-size: 1em; 
+    color: #555; 
+    line-height: 1.6; 
+}
+
+       
+
+      
         .timeline-container {
             margin-top: 20px;
             text-align: center;
+            width: 100%;
         }
-        .timeline-content {
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-height: 300px;
-            overflow-y: auto;
+        .timeline {
+            list-style: none;
+            padding: 0;
         }
-        .timeline-entry {
-            margin-bottom: 10px;
+        .timeline-item {
             padding: 10px;
             border-bottom: 1px solid #ddd;
         }
-        .edit-area {
-            margin-top: 20px;
+        .timeline-item:last-child {
+            border-bottom: none;
         }
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .timeline-time {
+            font-size: 0.8em;
+            color: #666;
         }
-        button {
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007BFF;
-            color: white;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
+        .timeline-content {
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div class="login-info" id="login-info">ログイン: 読み込み中...</div>
-            <button class="logout-button" id="logout-button">ログアウト</button>
+            <h1>みんなの翻刻広場</h1>
+            <div id="login-info" class="login-info"></div>
+            <div id="logout" class="logout-button">ログアウト</div>
         </div>
-        <h1>みんなの翻刻広場</h1>
+        <div class="notice">重要なお知らせ（Inportant Announcement）：現在、お知らせはありません（No announcements currently.）</div>
     </header>
     <main>
         <div class="nav-box">
-            <a href="transcription.html">翻刻ページ</a>
-            <a href="projects.html">プロジェクト</a>
+            <a href="#">みんなの翻刻を見る</a>
+            <a href="projects.html">プロジェクト一覧</a>
             <a href="guide.html">ご利用案内</a>
         </div>
         <div class="announcement">
-            <h2>お知らせ</h2>
-            <p>新機能が追加されました！</p>
-        </div>
-        <div class="activity" id="activity">
-            <p id="total-time">合計ログイン時間: 読み込み中...</p>
-            <p id="editing">編集中: 読み込み中...</p>
-            <p id="recent-edit">最近の編集: 読み込み中...</p>
-        </div>
-        <div class="edit-area">
-            <h3>現在編集中:</h3>
-            <textarea id="edit-area" placeholder="ここに編集内容を入力してください..."></textarea>
-            <button id="save-btn">保存</button>
+            <h3>お知らせ</h3>
+            <ul class="shifted">
+             <li>操作方法など詳しくは（ご利用案内）をご覧ください。</li>
+            </ul>
         </div>
         <div class="timeline-container">
-            <h2>タイムライン</h2>
-            <div class="timeline-content" id="timeline-content"></div>
+            <h2>最近の編集</h2>
+            <ul id="timeline" class="timeline">
+                <!-- タイムラインのアイテムがここに挿入されます -->
+            </ul>
         </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Created by Yuya.I</p>
-    </footer>
-    <script src="/socket.io/socket.io.js"></script>
     <script>
-        const socket = io();
-
-        // ユーザー名の取得と表示
-        const userName = localStorage.getItem('userName') || 'ゲスト';
-        document.getElementById('login-info').textContent = 'こんにちは ' + userName + 'さん';
-
-        // 作業履歴の取得と表示
-        function updateActivity() {
-            const totalTime = localStorage.getItem('loginTime') || '0分';
-            const editing = localStorage.getItem('currentEdit') || 'なし';
-            const recentEdit = (JSON.parse(localStorage.getItem('recentEdits')) || []).slice(0, 1).join(', ') || 'なし'; // 最近の編集の最初の1つを表示
-
-            document.getElementById('total-time').textContent = '合計ログイン時間: ' + totalTime;
-            document.getElementById('editing').textContent = '編集中: ' + editing;
-            document.getElementById('recent-edit').textContent = '最近の編集: ' + recentEdit;
-        }
-
-        updateActivity();
-
-        // 保存ボタンのクリックイベント
-        document.getElementById('save-btn').addEventListener('click', () => {
-            const editContent = document.getElementById('edit-area').value;
-
-            // 最近の編集の更新
-            const recentEdits = JSON.parse(localStorage.getItem('recentEdits')) || [];
-            if (editContent.trim()) {
-                recentEdits.unshift(editContent);
-                if (recentEdits.length > 5) {
-                    recentEdits.pop(); // 最新の5つだけを保存
-                }
-                localStorage.setItem('recentEdits', JSON.stringify(recentEdits));
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = localStorage.getItem('userName');
+            const loginStart = localStorage.getItem('loginStart');
+            
+            if (username) {
+                document.getElementById('login-info').textContent = `こんにちは『${username}』様`;
+            } else {
+                window.location.href = 'index.html'; 
             }
 
-            // 現在編集中の内容の保存
-            localStorage.setItem('currentEdit', editContent);
+            if (loginStart) {
+                const elapsed = Date.now() - parseInt(loginStart, 10);
+                const minutes = Math.floor(elapsed / 60000);
+                const seconds = Math.floor((elapsed % 60000) / 1000);
+                const loginTime = `${minutes}分 ${seconds}秒`;
+                document.getElementById('login-info').textContent += ` (ログイン時間: ${loginTime})`;
+            }
 
-            // 最近の編集のリストの更新
-            const recentEditsList = document.getElementById('timeline-content');
-            recentEditsList.innerHTML = '';
-            recentEdits.forEach(edit => {
-                const listItem = document.createElement('div');
-                listItem.className = 'timeline-entry';
-                listItem.textContent = edit;
-                recentEditsList.appendChild(listItem);
+            document.getElementById('logout').addEventListener('click', () => {
+                localStorage.removeItem('userName');
+                localStorage.removeItem('loginStart');
+                window.location.href = 'index.html'; 
             });
 
-            // 更新後の作業履歴を再表示
-            updateActivity();
-        });
+            const timelineData = [
+                { time: '10:00', content: '最初の投稿がありました' },
+                { time: '11:30', content: '新しいユーザーが登録しました' },
+                // 他のタイムラインアイテムをここに追加
+            ];
 
-        // ログアウト処理
-        document.getElementById('logout-button').addEventListener('click', () => {
-            localStorage.removeItem('userName');
-            localStorage.removeItem('loginTime');
-            localStorage.removeItem('currentEdit');
-            localStorage.removeItem('recentEdits');
-            window.location.href = 'index.html'; 
-        });
-
-        // タイムラインの更新
-        socket.on('timelineUpdate', (timeline) => {
-            const timelineContent = document.getElementById('timeline-content');
-            timelineContent.innerHTML = '';
-            timeline.forEach(entry => {
-                const div = document.createElement('div');
-                div.className = 'timeline-entry';
-                div.textContent = `${entry.username} ${entry.message} ${entry.transcription}`;
-                timelineContent.appendChild(div);
+            const timelineElement = document.getElementById('timeline');
+            timelineData.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.className = 'timeline-item';
+                listItem.innerHTML = `<div class="timeline-time">${item.time}</div><div class="timeline-content">${item.content}</div>`;
+                timelineElement.appendChild(listItem);
             });
-        });
-
-        // ページロード時にタイムラインを更新
-        document.addEventListener('DOMContentLoaded', () => {
-            socket.emit('requestTimeline');  // 初期タイムラインの取得
-
-            // ログイン開始時刻の保存
-            localStorage.setItem('loginStart', Date.now());
-        });
-
-        // ページのアンロード時に合計ログイン時間を更新
-        window.addEventListener('beforeunload', () => {
-            let loginTime = parseInt(localStorage.getItem('loginTime')) || 0;
-            loginTime += Math.round((Date.now() - (parseInt(localStorage.getItem('loginStart')) || Date.now())) / 60000);
-            localStorage.setItem('loginTime', loginTime);
         });
     </script>
+    <script>
+        setInterval(function() {
+            location.reload();
+        }, 300000); 
+    </script>
+    
 </body>
 </html>
