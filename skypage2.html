@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ホームページ</title>
+    <title>みんなの翻刻広場</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -120,6 +120,27 @@
             padding: 10px;
             border-bottom: 1px solid #ddd;
         }
+        .edit-area {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -132,7 +153,7 @@
     </header>
     <main>
         <div class="nav-box">
-            <a href="skypage2.html">ホーム</a>
+            <a href="transcription.html">翻刻ページ</a>
             <a href="projects.html">プロジェクト</a>
             <a href="guide.html">ご利用案内</a>
         </div>
@@ -145,6 +166,11 @@
             <p id="editing">編集中: 読み込み中...</p>
             <p id="recent-edit">最近の編集: 読み込み中...</p>
         </div>
+        <div class="edit-area">
+            <h3>現在編集中:</h3>
+            <textarea id="edit-area" placeholder="ここに編集内容を入力してください..."></textarea>
+            <button id="save-btn">保存</button>
+        </div>
         <div class="timeline-container">
             <h2>タイムライン</h2>
             <div class="timeline-content" id="timeline-content"></div>
@@ -153,7 +179,6 @@
     <footer>
         <p>&copy; 2024 Created by Yuya.I</p>
     </footer>
-
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io();
@@ -164,9 +189,9 @@
 
         // 作業履歴の取得と表示
         function updateActivity() {
-            const totalTime = localStorage.getItem('totalTime') || '0時間';
-            const editing = localStorage.getItem('editing') || 'なし';
-            const recentEdit = localStorage.getItem('recentEdit') || 'なし';
+            const totalTime = localStorage.getItem('loginTime') || '0分';
+            const editing = localStorage.getItem('currentEdit') || 'なし';
+            const recentEdit = (JSON.parse(localStorage.getItem('recentEdits')) || []).slice(0, 1).join(', ') || 'なし'; // 最近の編集の最初の1つを表示
 
             document.getElementById('total-time').textContent = '合計ログイン時間: ' + totalTime;
             document.getElementById('editing').textContent = '編集中: ' + editing;
@@ -175,12 +200,43 @@
 
         updateActivity();
 
+        // 保存ボタンのクリックイベント
+        document.getElementById('save-btn').addEventListener('click', () => {
+            const editContent = document.getElementById('edit-area').value;
+
+            // 最近の編集の更新
+            const recentEdits = JSON.parse(localStorage.getItem('recentEdits')) || [];
+            if (editContent.trim()) {
+                recentEdits.unshift(editContent);
+                if (recentEdits.length > 5) {
+                    recentEdits.pop(); // 最新の5つだけを保存
+                }
+                localStorage.setItem('recentEdits', JSON.stringify(recentEdits));
+            }
+
+            // 現在編集中の内容の保存
+            localStorage.setItem('currentEdit', editContent);
+
+            // 最近の編集のリストの更新
+            const recentEditsList = document.getElementById('timeline-content');
+            recentEditsList.innerHTML = '';
+            recentEdits.forEach(edit => {
+                const listItem = document.createElement('div');
+                listItem.className = 'timeline-entry';
+                listItem.textContent = edit;
+                recentEditsList.appendChild(listItem);
+            });
+
+            // 更新後の作業履歴を再表示
+            updateActivity();
+        });
+
         // ログアウト処理
         document.getElementById('logout-button').addEventListener('click', () => {
             localStorage.removeItem('userName');
-            localStorage.removeItem('totalTime');
-            localStorage.removeItem('editing');
-            localStorage.removeItem('recentEdit');
+            localStorage.removeItem('loginTime');
+            localStorage.removeItem('currentEdit');
+            localStorage.removeItem('recentEdits');
             window.location.href = 'index.html'; 
         });
 
@@ -199,6 +255,16 @@
         // ページロード時にタイムラインを更新
         document.addEventListener('DOMContentLoaded', () => {
             socket.emit('requestTimeline');  // 初期タイムラインの取得
+
+            // ログイン開始時刻の保存
+            localStorage.setItem('loginStart', Date.now());
+        });
+
+        // ページのアンロード時に合計ログイン時間を更新
+        window.addEventListener('beforeunload', () => {
+            let loginTime = parseInt(localStorage.getItem('loginTime')) || 0;
+            loginTime += Math.round((Date.now() - (parseInt(localStorage.getItem('loginStart')) || Date.now())) / 60000);
+            localStorage.setItem('loginTime', loginTime);
         });
     </script>
 </body>

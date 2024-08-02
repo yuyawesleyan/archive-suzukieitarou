@@ -10,34 +10,46 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
         header, footer {
-            background-color: #f4f4f4;
+            background-color: #007BFF;
+            color: white;
             padding: 1rem;
             text-align: center;
         }
         main {
             padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         #transcription-section {
             text-align: center;
+            margin-bottom: 2rem;
         }
         #transcription-section img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
             margin-bottom: 1rem;
         }
         textarea {
-            width: 100%;
+            width: calc(100% - 22px);
             height: 150px;
             margin-bottom: 1rem;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
         }
         button {
             background-color: #007BFF;
             color: white;
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
         }
         button:hover {
@@ -49,10 +61,14 @@
         #timeline-content {
             background-color: #fff;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             max-height: 300px;
             overflow-y: auto;
+        }
+        .timeline-entry {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
         }
         .progress-container {
             margin-top: 2rem;
@@ -64,7 +80,21 @@
             width: 0;
             text-align: center;
             line-height: 30px;
-            border-radius: 5px;
+            border-radius: 4px;
+        }
+        .message {
+            padding: 10px;
+            margin-top: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
         }
     </style>
 </head>
@@ -86,6 +116,7 @@
             <h2>進捗状況</h2>
             <div class="progress-bar" id="progress-bar">0%</div>
         </section>
+        <div id="message-container"></div>
     </main>
     <footer>
         <p>&copy; 2024 Created by Yuya.I</p>
@@ -97,7 +128,7 @@
         document.getElementById('save-button').addEventListener('click', () => {
             const transcriptionText = document.getElementById('transcription-text').value;
             if (transcriptionText.trim() === '') {
-                alert('翻刻内容を入力してください');
+                showMessage('翻刻内容を入力してください', 'error');
                 return;
             }
 
@@ -111,7 +142,7 @@
             });
 
             // 進捗状況の更新
-            fetch('https://example.com/updateProgress', { // 実際のAPIエンドポイントに置き換えてください
+            fetch('/updateProgress', { // 実際のAPIエンドポイントに置き換えてください
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -121,8 +152,13 @@
               .then(data => {
                 console.log('進捗状況が更新されました:', data);
                 updateProgress();
+                showMessage('保存が成功しました', 'success');
+                setTimeout(() => window.location.href = 'home.html', 2000); // 2秒後にホームページにリダイレクト
               })
-              .catch(error => console.error('エラー:', error));
+              .catch(error => {
+                console.error('エラー:', error);
+                showMessage('保存中にエラーが発生しました', 'error');
+              });
 
             // フォームのリセット
             document.getElementById('transcription-text').value = '';
@@ -142,7 +178,7 @@
         }
 
         function updateProgress() {
-            fetch('https://example.com/getProgress') // 実際のAPIエンドポイントに置き換えてください
+            fetch('/getProgress') // 実際のAPIエンドポイントに置き換えてください
                 .then(response => response.json())
                 .then(data => {
                     const progressBar = document.getElementById('progress-bar');
@@ -150,6 +186,11 @@
                     progressBar.textContent = `${data.progress}%`;
                 })
                 .catch(error => console.error('エラー:', error));
+        }
+
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('message-container');
+            messageContainer.innerHTML = `<div class="message ${type}">${message}</div>`;
         }
 
         // ページロード時にタイムラインと進捗状況を更新
