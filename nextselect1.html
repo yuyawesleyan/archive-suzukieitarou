@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームページデザイン</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 1rem;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .box {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        .box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .description {
+            padding: 1rem;
+        }
+
+        .description h2 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .description p {
+            margin: 0;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.5rem;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>翻刻可能データ一覧</h1>
+    </header>
+    <main>
+        <section class="gallery">
+            <a href="page1.html" class="box">
+                <img src="IMG_0395.JPG" alt="画像1">
+                <div class="description">
+                    <h2>P144</h2>
+                    <p>こちらをクリックして翻刻を始めてください</p>
+                </div>
+            </a>
+            <a href="page2.html" class="box">
+                <img src="１０.JPG" alt="画像2">
+                <div class="description">
+                    <h2>P145</h2>
+                    <p>こちらをクリックして翻刻を始めてください</p>
+                </div>
+            </a>
+            <a href="page3.html" class="box">
+                <img src="１１.JPG" alt="画像3">
+                <div class="description">
+                    <h2>P146</h2>
+                    <p>こちらをクリックして翻刻を始めてください</p>
+                </div>
+            </a>
+            <a href="page4.html" class="box">
+                <img src="１２.JPG" alt="画像4">
+                <div class="description">
+                    <h2>P147</h2>
+                    <p>こちらをクリックして翻刻を始めてください</p>
+                </div>
+            </a>
+            <a href="page5.html" class="box">
+                <img src="１３.JPG" alt="画像5">
+                <div class="description">
+                    <h2>P148</h2>
+                    <p>こちらをクリックして翻刻を始めてください</p>
+                </div>
+            </a>
+            <a href="page6.html" class="box">
+                <img src="１４.JPG" alt="画像6">
+                <div class="description">
+                    <h2>P149</h2>
+                    <p>こちらをクリックして翻刻を始めてください</p>
+                </div>
+            </a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Created by Yuya.I</p>
+    </footer>
+</body>
+</html>
