@@ -152,50 +152,7 @@
             margin-top: 10px;
         }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.5em;
-            }
-
-            .login-info {
-                position: static;
-                margin-top: 10px;
-            }
-
-            .logout-button {
-                position: static;
-                margin-top: 10px;
-                display: block;
-                width: 100%;
-            }
-
-            .activity {
-                position: static;
-                width: 100%;
-                margin-top: 20px;
-            }
-
-            .nav-box {
-                flex-direction: column;
-            }
-
-            .nav-box a {
-                width: 100%;
-                margin: 5px 0;
-            }
-
-            footer {
-                padding: 15px 10px;
-                text-align: center;
-            }
-
-            .announcement {
-                width: auto;
-                max-width: 100%;
-                padding: 15px;
-            }
-        }
-      
+       
     </style>
 </head>
 <body>
@@ -252,6 +209,111 @@
             localStorage.removeItem('recentEdit');
             window.location.href = 'index.html'; 
         });
+    </script>
+
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>プロジェクトおよび翻刻ページ</title>
+    <style>
+        .photo-grid, .photo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .photo-grid img, .photo-container img {
+            width: 100%;
+            cursor: pointer;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .transcription-data {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="project-view">
+        <h1>プロジェクトページ</h1>
+        <div class="photo-grid">
+            <a href="?photo=photo1"><img src="photo1.jpg" alt="原稿1"></a>
+            <a href="?photo=photo2"><img src="photo2.jpg" alt="原稿2"></a>
+            <!-- 他の写真も同様に追加 -->
+        </div>
+    </div>
+
+    <div id="transcription-view" style="display: none;">
+        <h1>翻刻記入ページ</h1>
+        <div class="photo-container">
+            <img id="photo" src="" alt="原稿写真">
+        </div>
+        <div class="form-container">
+            <h2>翻刻内容</h2>
+            <textarea id="transcription-text" rows="10" cols="50" placeholder="翻刻内容を記入してください..."></textarea>
+            <button type="submit" onclick="saveTranscription()">送信</button>
+        </div>
+        <div class="transcription-data">
+            <h2>翻刻データ</h2>
+            <div id="transcription-details"></div>
+        </div>
+    </div>
+
+    <script>
+        function showTranscriptionView(photoSrc) {
+            document.getElementById('project-view').style.display = 'none';
+            document.getElementById('transcription-view').style.display = 'block';
+            document.getElementById('photo').src = photoSrc + '.jpg'; // 写真のパスを設定
+            loadTranscriptionData(photoSrc);
+        }
+
+        function showProjectView() {
+            document.getElementById('project-view').style.display = 'block';
+            document.getElementById('transcription-view').style.display = 'none';
+        }
+
+        function loadTranscriptionData(photo) {
+            const transcriptionDetails = document.getElementById('transcription-details');
+            transcriptionDetails.innerHTML = ''; // 現在のデータをクリア
+
+            // 仮のデータを使用
+            const dummyData = [
+                { user: 'ユーザーA', time: '2024-08-01 10:00', text: '翻刻内容1' },
+                { user: 'ユーザーB', time: '2024-08-01 11:00', text: '翻刻内容2' }
+            ];
+
+            dummyData.forEach(data => {
+                const div = document.createElement('div');
+                div.textContent = `${data.time} - ${data.user}: ${data.text}`;
+                transcriptionDetails.appendChild(div);
+            });
+        }
+
+        function saveTranscription() {
+            const text = document.getElementById('transcription-text').value;
+            const user = '現在のユーザー'; // 実際にはログインしているユーザーの情報を取得
+            const time = new Date().toLocaleString();
+
+            // ここに翻刻データを保存する処理を追加（サーバーサイドへの送信など）
+            console.log(`保存: ${time} - ${user}: ${text}`);
+
+            // 保存後に表示を更新
+            loadTranscriptionData('photo1'); // 実際には現在の写真IDを使用
+        }
+
+        // クエリパラメータの取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const photo = urlParams.get('photo');
+
+        if (photo) {
+            showTranscriptionView(photo);
+        } else {
+            showProjectView();
+        }
     </script>
 </body>
 </html>
