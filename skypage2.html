@@ -12,7 +12,6 @@
             color: #333;
             background-color: #f4f4f4;
         }
-
         header {
             background-color: #007BFF;
             color: white;
@@ -20,19 +19,15 @@
             text-align: center;
             position: relative;
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
-
         header h1 {
             margin: 0;
             font-size: 2em;
         }
-
         .notice {
             background-color: #FFC107;
             color: #333;
@@ -40,7 +35,6 @@
             border-radius: 3px;
             font-size: 0.9em;
         }
-
         .login-info {
             background-color: #28A745;
             color: white;
@@ -51,7 +45,6 @@
             bottom: -20px;
             right: -20px;
         }
-
         .logout-button {
             background-color: #DC3545;
             color: white;
@@ -64,11 +57,9 @@
             bottom: -50px;
             right: -20px;
         }
-
         .logout-button:hover {
             background-color: #c82333;
         }
-
         .activity {
             background-color: #ddf7db;
             color: #333;
@@ -81,31 +72,25 @@
             right: 0px;
             top: 200px;
         }
-
         main {
             padding: 20px;
             text-align: center;
         }
-
         section {
             margin-bottom: 20px;
         }
-
         h2 {
             font-size: 1.5em;
             color: #007BFF;
         }
-
         footer {
-            background-color: #f4f4f4;
+            background-color: #007BFF;
             color: rgb(13, 13, 13);
             text-align: left;
             padding: 10px 0;
-            position: absolute;
             bottom: 0;
             width: 100%;
         }
-
         .nav-box {
             display: flex;
             justify-content: center;
@@ -114,7 +99,6 @@
             background-color: #bed7f1;
             border-radius: 5px;
         }
-
         .nav-box a {
             display: block;
             width: 120px;
@@ -126,33 +110,39 @@
             border-radius: 5px;
             text-align: center;
         }
-
         .nav-box a:hover {
             background-color: #0056b3;
-        }
-
-        .announcement {
-    background-color: #d5d4d1;
-    color: #333;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 20px 0;
-    text-align: center;
-    width: 600px; 
-    height: 200px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
         }
         .announcement {
             background-color: #e9ecef;
             border: 1px solid #ddd;
             padding: 20px;
             margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 1000px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-       
+        .timeline-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .timeline-content {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .timeline-entry {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -178,12 +168,19 @@
             <p id="editing">編集中: 読み込み中...</p>
             <p id="recent-edit">最近の編集: 読み込み中...</p>
         </div>
+        <div class="timeline-container">
+            <h2>タイムライン</h2>
+            <div class="timeline-content" id="timeline-content"></div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Created by Yuya.I</p>
     </footer>
 
+    <script src="/socket.io/socket.io.js"></script>
     <script>
+        const socket = io();
+
         // ユーザー名の取得と表示
         var userName = localStorage.getItem('userName') || 'ゲスト';
         document.getElementById('login-info').textContent = 'こんにちは ' + userName + 'さん';
@@ -209,54 +206,23 @@
             localStorage.removeItem('recentEdit');
             window.location.href = 'index.html'; 
         });
-    </script>
 
+        // タイムラインの更新
+        socket.on('timelineUpdate', (timeline) => {
+            const timelineContent = document.getElementById('timeline-content');
+            timelineContent.innerHTML = '';
+            timeline.forEach(entry => {
+                const div = document.createElement('div');
+                div.className = 'timeline-entry';
+                div.textContent = `${entry.username} ${entry.message} ${entry.transcription}`;
+                timelineContent.appendChild(div);
+            });
+        });
 
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>翻刻結果</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header, footer { background-color: #f8f9fa; padding: 1em; text-align: center; }
-        main { padding: 1em; }
-        .transcription-display { border: 1px solid #ccc; padding: 1em; margin-bottom: 1em; }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>翻刻結果</h1>
-    </header>
-    <main>
-        <div class="transcription-display" id="transcription-display">
-            <!-- 翻刻データがここに表示されます -->
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 鈴木栄太郎翻刻プロジェクト</p>
-    </footer>
-
-    <script>
-        // サーバーサイドでデータを受け取るための例
+        // ページロード時にタイムラインを更新
         document.addEventListener('DOMContentLoaded', () => {
-            fetch('/getTimeline')  // サーバーからタイムラインデータを取得
-                .then(response => response.json())
-                .then(data => {
-                    const timeline = document.getElementById('timeline');
-                    data.forEach(entry => {
-                        const item = document.createElement('div');
-                        item.textContent = `${entry.username} ${entry.message}: ${entry.transcription}`;
-                        timeline.appendChild(item);
-                    });
-                })
-                .catch(error => console.error('エラー:', error));
+            socket.emit('requestTimeline');  // 初期タイムラインの取得
         });
     </script>
-    
 </body>
 </html>
