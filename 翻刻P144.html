@@ -133,18 +133,14 @@
         }
 
         function updateTimeline() {
-            fetch('https://example.com/getTimeline')  // 実際のAPIエンドポイントに置き換えてください
-                .then(response => response.json())
-                .then(data => {
-                    const timelineContent = document.getElementById('timeline-content');
-                    timelineContent.innerHTML = ''; // 既存の内容をクリア
-                    data.forEach(entry => {
-                        const item = document.createElement('div');
-                        item.textContent = `${entry.username} ${entry.message}: ${entry.transcription}`;
-                        timelineContent.appendChild(item);
-                    });
-                })
-                .catch(error => console.error('エラー:', error));
+            fetch('https://example.com/updateTimeline', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username, message: 'が翻刻を作成しました', transcription: transcriptionText })
+})
+
         }
 
         function updateProgress() {
