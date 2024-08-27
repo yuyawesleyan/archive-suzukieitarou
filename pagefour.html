@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBサイト制作・運用者の紹介</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .intro, .team {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team {
+            background: #e0e0e0;
+        }
+
+        .member {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .member:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: left;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+        }
+
+        h3{
+            margin: 10px 0;
+
+        }
+
+        p{
+            margin: 5px 0;
+        }
+
+        h4{
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WEBサイト制作・運用者の紹介</h1>
+    </header>
+    <section class="intro">
+        <h2>私たちについて</h2>
+        
+    </section>
+    <section class="team">
+        <h2>制作・運用担当者</h2>
+        <div class="member" id="member1">
+            <img src="２３４５.png" alt="メンバー1">
+            <p>名前: 池田 悠耶</p>
+            <p>担当: 構築〜運用</p>
+        </div>
+       
+    </section>
+<h3>ご挨拶</h3>
+<p>皆様、こんにちは。
+    私は、WEBサイトの構築および運用を専門としています。今回は、私が手掛けた「鈴木栄太郎の手書き原稿のデジタルアーカイブ化」についてご紹介させていただきます。
+    </p>
+    <h3>私のミッション</h3>
+    <p>私のミッションは、貴重な歴史的資料をデジタル化し、誰でもアクセス可能にすることで、次世代へと受け継いでいくことです。ユーザーフレンドリーで魅力的なデジタルアーカイブを提供することを目指しています。</p>
+        <h3>プロジェクト概要</h3>
+        <p>私は、鈴木栄太郎の原稿のデジタルアーカイブ化を卒業研究として取り組んでいます。この卒業研究では、以下の内容に焦点を当てました。</p>
+        <h4>デジタルアーカイブの技術</h4>
+        <p>スキャンをし原稿のデジタル化を行いました。また、ユーザーが簡単にアクセスできるインターフェースを設計し、直感的に使用できるようにしました。</p>
+        <h4>デジタルアーカイブに興味を持っていただくための取り組み</h4>
+        <p>デジタルアーカイブの魅力を広めるために、誰でも簡単に参加できるコミュニティ「みんなの翻刻広場」を開設しました。この広場では、ユーザーが自分の手で資料を翻刻し、その過程で歴史的資料に対する理解を深めることができます。</p>
+        <h3>私の強み</h3>
+        <h4>ユーザーフレンドリーなデザイン</h4>
+        <p>使いやすさを最優先に考えたインターフェース設計で、ユーザーに快適な体験を提供します。</p>
+        <h4>持続可能なアーカイブ管理</h4>
+        <p>将来的なデータの保全と管理を見据えたシステム構築で、長期的な視点からアーカイブの運用を支援します。</p>
+        <h3>最後に</h3>
+        <p>私は、デジタルアーカイブを通じて歴史的資料を守り、共有することの重要性を深く理解しています。皆様のご支援とご協力をいただきながら、このプロジェクトをさらに発展させていくことを楽しみにしています。
+
+        </p>
+        <p>どうぞよろしくお願い申し上げます。</p>
+
+    <footer>
+        <p>&copy; 2024 Created by Yuya.I </p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const members = document.querySelectorAll('.member');
+            
+            members.forEach(member => {
+                member.addEventListener('click', () => {
+                    alert(`このメンバーは、${member.querySelector('p').textContent}です。鎮西学院大学４年生です。（２０２４年）`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
